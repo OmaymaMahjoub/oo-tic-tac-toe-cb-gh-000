@@ -13,11 +13,11 @@ class Tic_Tac_Toe
     def input_to_index(input)
       return input.to_i-1
     end
-    
+
     def position_taken?(board=[" "," "," "," "," "," "," "," "," "],index=0)
       return (board[index]=="X")||(board[index]=="O")
     end
-    
+
     def valid_move?(board=[" "," "," "," "," "," "," "," "," "],index=0)
       if position_taken?(board,index)
         return false
@@ -26,7 +26,7 @@ class Tic_Tac_Toe
       end
       return true
     end
-    
+
     def move(board,index,input)
       if valid_move?(board,index)
         board[index]=input
@@ -35,7 +35,7 @@ class Tic_Tac_Toe
         return false
       end
     end
-    
+
     def turn_count(board=[" "," "," "," "," "," "," "," "," "])
       counter=0
       board.each do |input|
@@ -45,7 +45,7 @@ class Tic_Tac_Toe
       end
       return counter
     end
-    
+
     def current_player(board)
       counter=turn_count(board)
       if counter%2==0
@@ -53,7 +53,7 @@ class Tic_Tac_Toe
       end
       return "O"
     end
-    
+
     def turn (board=[" "," "," "," "," "," "," "," "," "])
       puts "Please enter 1-9:"
       input=gets.strip
@@ -69,9 +69,9 @@ class Tic_Tac_Toe
       end
       display_board(board)
     end
-    
+
     WIN_COMBINATIONS=[[0,1,2],[3,4,5],[6,7,8],[0,4,8],[2,4,6],[0,3,6],[1,4,7],[2,5,8]]
-    
+
     def won?(board)
       WIN_COMBINATIONS.each do |win_combination|
         if (board[win_combination[0]]==board[win_combination[1]])&&(board[win_combination[1]]==board[win_combination[2]])&&((board[win_combination[1]]=="X")||(board[win_combination[1]]=="O"))
@@ -80,19 +80,19 @@ class Tic_Tac_Toe
       end
       return false
     end
-    
+
     def full?(board)
       return !(board.include?(" "))
     end
-    
+
     def draw?(board)
       return (full?(board)&&!won?(board))
     end
-    
+
     def over?(board)
       return (draw?(board)||won?(board))
     end
-    
+
     def winner(board)
       arr=won?(board)
       if arr!=false
@@ -100,7 +100,7 @@ class Tic_Tac_Toe
       end
       return nil
     end
-    
+
     def play()
       while !over?(@board)
         turn(@board)
