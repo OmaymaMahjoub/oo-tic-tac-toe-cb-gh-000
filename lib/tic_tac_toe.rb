@@ -102,13 +102,13 @@ class Tic_Tac_Toe
     end
 
     def play()
-      while !over?(@board)
-        turn(@board)
+      while !over?(:@board)
+        turn(:@board)
       end
-      if draw?(@board)
+      if draw?(:@board)
         puts"Cat's Game!"
       else
-        input=winner(@board)
+        input=winner(:@board)
         puts "Congratulations #{input}!"
       end
     end
